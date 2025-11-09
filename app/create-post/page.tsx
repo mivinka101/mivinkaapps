@@ -9,7 +9,7 @@ import { authOptions } from "@/lib/auth";
 export default async function CreatePostPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
-    redirect("/(auth)/signin");
+    redirect("/auth/sign-in");
   }
 
   const subreddits = await prisma.subreddit.findMany({ orderBy: { title: "asc" } });

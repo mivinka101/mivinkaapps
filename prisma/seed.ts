@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -11,11 +12,14 @@ async function main() {
   await prisma.subreddit.deleteMany();
   await prisma.user.deleteMany();
 
-  const [alice, bob, carol] = await Promise.all([
+  const passwordHash = await bcrypt.hash('Password123!', 10);
+
+  const [alice, bob, carol, _demo] = await Promise.all([
     prisma.user.create({
       data: {
         name: 'Alice Johnson',
         email: 'alice@example.com',
+        password: passwordHash,
         image: 'https://i.pravatar.cc/160?img=1',
       },
     }),
@@ -23,6 +27,7 @@ async function main() {
       data: {
         name: 'Bob Martinez',
         email: 'bob@example.com',
+        password: passwordHash,
         image: 'https://i.pravatar.cc/160?img=15',
       },
     }),
@@ -30,7 +35,16 @@ async function main() {
       data: {
         name: 'Carol Lee',
         email: 'carol@example.com',
+        password: passwordHash,
         image: 'https://i.pravatar.cc/160?img=32',
+      },
+    }),
+    prisma.user.create({
+      data: {
+        name: 'Demo User',
+        email: 'demo@lightfeed.dev',
+        password: passwordHash,
+        image: 'https://i.pravatar.cc/160?img=11',
       },
     }),
   ]);

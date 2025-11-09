@@ -14,7 +14,7 @@ export async function Header() {
       </Link>
       <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
         <Link
-          href={session?.user ? "/create-post" : "/(auth)/signin"}
+          href={session?.user ? "/create-post" : "/auth/sign-in"}
           className="rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-700"
         >
           Создать пост

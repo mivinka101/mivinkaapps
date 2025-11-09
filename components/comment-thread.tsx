@@ -127,9 +127,9 @@ function SignPrompt() {
   return (
     <div className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-slate-100 p-6 text-center">
       <p className="text-sm text-slate-600">
-        Чтобы участвовать в обсуждениях, войдите через GitHub.
+        Чтобы участвовать в обсуждениях, войдите в свой аккаунт.
       </p>
-      <Link href="/(auth)/signin" className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white hover:bg-slate-700">
+      <Link href="/auth/sign-in" className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white hover:bg-slate-700">
         Войти
       </Link>
     </div>
